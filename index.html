@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css' rel='stylesheet' />
+
+</head>
+
+<body>
+    <div id='map' style='width: 400px; height: 300px;'></div>
+    <script type="text/javascript" src="./Downloads/d_node_map.geojson">
+    var mydata = JSON.parse(d_node_map);
+        console.log(mydata);
+    </script>
+    <script>
+        
+        mapboxgl.accessToken = 'pk.eyJ1IjoiYmVybmE5NyIsImEiOiJjazM2MjY3OW8wZGgzM2NxcmprdXVoYWZxIn0.SkzmTSB07rmtf1lhyVdBkA';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v9'
+        });
+
+        map.on('load', function () {
+            var url = 'd_node_map.geojson';
+            console.log(url);
+            map.addSource('source_id', { type: 'geojson', data: url });
+        });
+    </script>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
